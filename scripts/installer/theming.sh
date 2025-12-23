@@ -23,6 +23,28 @@ run_command "cp -r $BASE_DIR/configs/kitty /home/$SUDO_USER/.config/" "Copy Catp
 
 run_command "pacman -S matugen" "Used to generate color scheme form wallpapers." "yes"
 
+# Wallpaper setup
+WALLPAPER_SRC="$BASE_DIR/wallpapers"
+WALLPAPER_DEST="/home/$SUDO_USER/Pictures/wallpapers"
+
+# Check source directory
+if [ ! -d "$WALLPAPER_SRC" ]; then
+    log_message "Wallpaper source directory not found: $WALLPAPER_SRC"
+else
+    # Create destination directory if it doesn't exist
+    if [ ! -d "$WALLPAPER_DEST" ]; then
+        run_command "mkdir -p \"$WALLPAPER_DEST\"" \
+            "Create wallpapers directory" "yes" "no"
+    fi
+
+    # Copy wallpapers
+    run_command "cp -r \"$WALLPAPER_SRC\"/. \"$WALLPAPER_DEST\"/" \
+        "Copy wallpapers for matugen usage" "yes" "no"
+for ((i = 0; i < 10; i++)); do
+  echo "$i"
+done
+
+
 # Add instructions to configure theming
 print_info "\nPost-installation instructions:"
 print_bold_blue "Set themes and icons:"
