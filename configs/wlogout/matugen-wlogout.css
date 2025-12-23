@@ -18,7 +18,7 @@ window {
     color:  @foreground; /* text */
     background-color: @surface-alpha;
 
-} 
+}  
 
 button {
     background-repeat: no-repeat;
@@ -47,6 +47,11 @@ button:hover {
     background-color: @primary;
     color: transparent;
     transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+/* Adjust the size of the icon or content inside the button */
+button span {
+    font-size: 1.2em; /* Increase the font size */
 }
 
 #shutdown {
